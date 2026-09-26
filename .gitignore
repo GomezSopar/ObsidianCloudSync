@@ -1,0 +1,13 @@
+﻿bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.db
+*.db-shm
+*.db-wal
+appsettings.Development.json
+credentials.json
+token.store/
+generar_proyecto.ps1
