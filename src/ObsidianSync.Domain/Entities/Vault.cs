@@ -28,7 +28,8 @@ public class Vault
         FileHash? localHash,
         FileHash? remoteHash)
     {
-        var tracked = _files.FirstOrDefault(f => f.RelativePath == relativePath);
+        var tracked = _files.FirstOrDefault(f =>
+            string.Equals(f.RelativePath, relativePath, StringComparison.OrdinalIgnoreCase));
 
         if (localHash == remoteHash)
             return SyncAction.None;
@@ -54,7 +55,8 @@ public class Vault
 
     public void MarkAsSynced(string relativePath, FileHash hash, string remoteFileId)
     {
-        var existing = _files.FirstOrDefault(f => f.RelativePath == relativePath);
+        var existing = _files.FirstOrDefault(f =>
+            string.Equals(f.RelativePath, relativePath, StringComparison.OrdinalIgnoreCase));
         if (existing is not null)
         {
             existing.UpdateState(hash, remoteFileId, DateTime.UtcNow);
@@ -68,7 +70,8 @@ public class Vault
 
     public void UntrackFile(string relativePath)
     {
-        var existing = _files.FirstOrDefault(f => f.RelativePath == relativePath);
+        var existing = _files.FirstOrDefault(f =>
+            string.Equals(f.RelativePath, relativePath, StringComparison.OrdinalIgnoreCase));
         if (existing is not null)
             _files.Remove(existing);
 
