@@ -10,4 +10,3 @@ obj/
 appsettings.Development.json
 credentials.json
 token.store/
-generar_proyecto.ps1
